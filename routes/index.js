@@ -1,11 +1,9 @@
 const Router = require('koa-router');
-const controllers = require('../controllers');
+const controller = require('../controllers');
 
 const router = new Router();
 
-/* First route is for redirection */
-router.get('/', async ctx => await ctx.redirect('/countries'));
-router.get('/countries', controllers.countries);
-router.get('/countries/:code', controllers.country);
+router.get('/', controller.home);
+router.post('/dashboard', controller.dashboard);
 
 module.exports = router;

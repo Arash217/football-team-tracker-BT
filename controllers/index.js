@@ -1,36 +1,27 @@
-const apiProxy = require('../services/api-proxy');
-const filter = require('../services/filter');
+const {getAllTeams, findTeams, addTeamToUser} = require('../services/database');
 
-const countries = async ctx => {
-    const {order = 'asc', search = ''} = ctx.query;
-    let countries = await apiProxy.getAll();
-
-    if (order) {
-        countries = filter.sort(countries, order);
-    }
+const home = async ctx => {
+    const {search = ''} = ctx.query;
+    let filteredTeams = [];
 
     if (search) {
-        countries = filter.search(countries, search);
+        filteredTeams = findTeams(search);
     }
 
-    await ctx.render('countries', {
-        countries,
-        search,
-        order,
-        ascending: order === 'asc'
+    await ctx.render('home', {
+        teams: filteredTeams
     });
 };
 
-const country = async ctx => {
-    const {code} = ctx.params;
-    const country = await apiProxy.get(code);
+const dashboard = async ctx => {
+    const {team} = ctx.request.body;
 
-    await ctx.render('country', {
-        country
-    });
+    addTeamToUser(team);
+
+    await ctx.render('dashboard');
 };
 
 module.exports = {
-    countries,
-    country
+    home,
+    dashboard
 };

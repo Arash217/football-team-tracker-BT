@@ -1,0 +1,10 @@
+<form action="/dashboard" method="post">
+    <ul>
+        {{#each teams}}
+            <li>
+                <span>{{name}}</span>
+                <button name="team" type="submit" value="{{id}}">Add</button>
+            </li>
+        {{/each}}
+    </ul>
+</form>

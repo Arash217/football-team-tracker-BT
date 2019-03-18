@@ -1,0 +1,77 @@
+{
+  "teams": [
+    {
+      "name": "ADO",
+      "id": 0
+    },
+    {
+      "name": "Ajax",
+      "id": 1
+    },
+    {
+      "name": "AZ",
+      "id": 2
+    },
+    {
+      "name": "De Graafschap",
+      "id": 3
+    },
+    {
+      "name": "Emmen",
+      "id": 4
+    },
+    {
+      "name": "Excelsior",
+      "id": 5
+    },
+    {
+      "name": "Feyenoord",
+      "id": 6
+    },
+    {
+      "name": "Fortuna sittard",
+      "id": 7
+    },
+    {
+      "name": "Groningen",
+      "id": 8
+    },
+    {
+      "name": "Heerenveen",
+      "id": 9
+    },
+    {
+      "name": "Heracles",
+      "id": 10
+    },
+    {
+      "name": "NAC",
+      "id": 11
+    },
+    {
+      "name": "PEC Zwolle",
+      "id": 12
+    },
+    {
+      "name": "PSV",
+      "id": 13
+    },
+    {
+      "name": "Utrecht",
+      "id": 14
+    },
+    {
+      "name": "Vitesse",
+      "id": 15
+    },
+    {
+      "name": "VVV-Venlo",
+      "id": 16
+    },
+    {
+      "name": "Willem II",
+      "id": 17
+    }
+  ],
+  "userTeams": []
+}

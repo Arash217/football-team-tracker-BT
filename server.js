@@ -1,22 +1,20 @@
-const path = require('path');
-const http2 = require('http2');
 const hbs = require('koa-hbs');
-const serve = require('koa-static');
 const Koa = require('koa');
+const serve = require('koa-static');
+const bodyParser = require('koa-body');
+const path = require('path');
 
 const middlewares = require('./middlewares');
 const router = require('./routes');
-const certificate = require('./config/certificate');
 
 /* Init Koa instance */
 const app = new Koa();
 
+/* Parse body */
+app.use(bodyParser());
+
 /* Serve assets from folder */
-app.use(serve(path.join(__dirname, '/public'), {
-    setHeaders(res) {
-        res.setHeader('cache-control', 'public, max-age=31536000');
-    }
-}));
+app.use(serve(path.join(__dirname, '/public')));
 
 /* Templating engine configuration */
 app.use(hbs.middleware({
@@ -33,11 +31,8 @@ app.use(router.routes());
 /* Allow all types of HTTP methods */
 app.use(router.allowedMethods());
 
-/* Start a http2 server with given certificate */
-const server = http2.createSecureServer(certificate, app.callback());
-
 /* Use port given from environment variable or the default */
 const port = process.env.PORT || 3000;
 
 /* Start server with given port */
-server.listen(port,() => console.log(`App started on port ${port}`));
+app.listen(port);
