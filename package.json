@@ -1,0 +1,32 @@
+{
+  "name": "koa-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js -e hbs",
+    "prebuild": "rimraf public && make-dir public/css",
+    "minify:css": "cleancss -O2 -o public/css/main.min.css resources/css/main.css",
+    "compress": "bread-compressor --brotli-quality=11 public",
+    "build": "run-s prebuild minify:* compress",
+    "start": "npm run build && node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-compose": "^4.1.0",
+    "koa-compress": "^3.0.0",
+    "koa-hbs": "^1.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "bread-compressor-cli": "^1.0.5",
+    "clean-css-cli": "^4.2.1",
+    "make-dir-cli": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.3"
+  }
+}
