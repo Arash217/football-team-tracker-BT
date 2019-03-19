@@ -1,4 +1,5 @@
-const {findTeams, addTeamToUser, getUserTeams} = require('../services/database');
+const MatchSimulator = require('../services/match-simulator');
+const {findTeams, addTeamToUser, getUserTeams, getRandomTeam} = require('../services/database');
 
 const home = async ctx => {
     const {search = ''} = ctx.query;
@@ -26,15 +27,31 @@ const addTeam = async ctx => {
     }
 };
 
-dashboard = async ctx => {
+const dashboard = async ctx => {
     const userTeams = getUserTeams();
     await ctx.render('dashboard', {
         userTeams
     });
 };
 
+let gameMatch = null;
+
+const match = async ctx => {
+    const {team} = ctx.params;
+
+    if (!gameMatch) {
+        gameMatch = new MatchSimulator(team, getRandomTeam().name);
+        gameMatch.start();
+    }
+
+    await ctx.render('match', {
+        ...gameMatch.getData()
+    });
+};
+
 module.exports = {
     home,
     addTeam,
-    dashboard
+    dashboard,
+    match
 };

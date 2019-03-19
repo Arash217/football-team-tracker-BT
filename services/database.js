@@ -4,17 +4,22 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync(path.resolve(__dirname, '../data/db.json'));
 const db = low(adapter);
 
-const getAllTeams = () => {
+const getTeams = () => {
     return db.get('teams').value();
 };
 
+const getRandomTeam = () => {
+  const teams = getTeams();
+  return teams[Math.floor(Math.random() * teams.length)];
+};
+
 const findTeams = search => {
-    return getAllTeams().filter(team => team.name.toLowerCase().includes(search.toLowerCase()));
+    return getTeams().filter(team => team.name.toLowerCase().includes(search.toLowerCase()));
 };
 
 const getUserTeams = () => {
     const userTeamsIds = db.get('userTeams').value();
-    return getAllTeams().filter(team => userTeamsIds.some(userTeam => userTeam.id === team.id))
+    return getTeams().filter(team => userTeamsIds.some(userTeam => userTeam.id === team.id))
 };
 
 const addTeamToUser = teamId => {
@@ -24,15 +29,16 @@ const addTeamToUser = teamId => {
         throw Error('Team does not exists');
     }
 
-    if (db.get('userTeams').find({id: teamId}).value()){
+    if (db.get('userTeams').find({id: teamId}).value()) {
         throw Error('Team is already added');
     }
 
-    db.get('userTeams').push({ id: teamId}).write();
+    db.get('userTeams').push({id: teamId}).write();
 };
 
 module.exports = {
     findTeams,
     addTeamToUser,
-    getUserTeams
+    getUserTeams,
+    getRandomTeam
 };
