@@ -50,6 +50,7 @@ nav {
     display: flex;
     align-items: center;
     padding-left: 1em;
+    font-weight: 700;
 }
 
 .team-cards {
@@ -68,6 +69,14 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
+    transform: translateY(0);
+    transition: 0.1s;
+    transition-property: transform;
+    border: 1px solid #c4c4c4;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
 }
 
 .team-card figcaption {
