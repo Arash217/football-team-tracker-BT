@@ -1,0 +1,47 @@
+:root {
+    --default-font-size: 1em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--default-font-size);
+}
+
+a {
+    text-decoration: none;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+main {
+    height: 100%;
+}
+
+.team-selector {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.team-selector header {
+    margin: 1em;
+}
+
+.team-selector input {
+    font-size: 1em;
+    padding: 0.1em;
+}
