@@ -1,5 +1,5 @@
 const MatchSimulator = require('../services/match-simulator');
-const {findTeams, addTeamToUser, getUserTeams, getRandomTeam} = require('../services/database');
+const {findTeams, getTeam, addTeamToUser, getUserTeams, getRandomTeam} = require('../services/database');
 
 const home = async ctx => {
     const {search = ''} = ctx.query;
@@ -40,7 +40,7 @@ const match = async ctx => {
     const {team} = ctx.params;
 
     if (!gameMatch) {
-        gameMatch = new MatchSimulator(team, getRandomTeam().name);
+        gameMatch = new MatchSimulator(getTeam(team).name, getRandomTeam().name);
         gameMatch.start();
     }
 

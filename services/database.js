@@ -8,6 +8,10 @@ const getTeams = () => {
     return db.get('teams').value();
 };
 
+const getTeam = id => {
+    return getTeams().find(team => team.id === Number(id));
+};
+
 const getRandomTeam = () => {
   const teams = getTeams();
   return teams[Math.floor(Math.random() * teams.length)];
@@ -40,5 +44,6 @@ module.exports = {
     findTeams,
     addTeamToUser,
     getUserTeams,
-    getRandomTeam
+    getRandomTeam,
+    getTeam
 };
