@@ -12,12 +12,27 @@ const findTeams = search => {
     return getAllTeams().filter(team => team.name.toLowerCase().includes(search.toLowerCase()));
 };
 
+const getUserTeams = () => {
+    const userTeamsIds = db.get('userTeams').value();
+    return getAllTeams().filter(team => userTeamsIds.some(userTeam => userTeam.id === team.id))
+};
+
 const addTeamToUser = teamId => {
-    db.get('userTeams').push({ id: teamId}).write()
+    teamId = Number(teamId);
+
+    if (!db.get('teams').find({id: teamId}).value()) {
+        throw Error('Team does not exists');
+    }
+
+    if (db.get('userTeams').find({id: teamId}).value()){
+        throw Error('Team is already added');
+    }
+
+    db.get('userTeams').push({ id: teamId}).write();
 };
 
 module.exports = {
-    getAllTeams,
     findTeams,
-    addTeamToUser
+    addTeamToUser,
+    getUserTeams
 };

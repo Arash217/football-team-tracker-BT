@@ -1,4 +1,4 @@
-const {getAllTeams, findTeams, addTeamToUser} = require('../services/database');
+const {findTeams, addTeamToUser, getUserTeams} = require('../services/database');
 
 const home = async ctx => {
     const {search = ''} = ctx.query;
@@ -13,15 +13,28 @@ const home = async ctx => {
     });
 };
 
-const dashboard = async ctx => {
+const addTeam = async ctx => {
     const {team} = ctx.request.body;
 
-    addTeamToUser(team);
+    try {
+        addTeamToUser(team);
+        ctx.redirect('/dashboard');
+    } catch (e) {
+        await ctx.render('error', {
+            errorMessage: e.message
+        });
+    }
+};
 
-    await ctx.render('dashboard');
+dashboard = async ctx => {
+    const userTeams = getUserTeams();
+    await ctx.render('dashboard', {
+        userTeams
+    });
 };
 
 module.exports = {
     home,
+    addTeam,
     dashboard
 };
