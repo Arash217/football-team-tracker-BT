@@ -1,6 +1,7 @@
 class Team {
-    constructor(name){
-        this.name = name;
+    constructor(teamObj){
+        this.name = teamObj.name;
+        this.id = teamObj.id;
         this.goals = 0;
     }
 

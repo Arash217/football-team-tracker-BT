@@ -2,28 +2,27 @@
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 </head>
 <body>
+<nav>
+    <a href="/">Back to search</a>
+</nav>
 <main>
-    <nav>
-        <a href="/">Go to search</a>
-    </nav>
-    <main>
-        <section class="team-cards">
-            {{#each userTeams}}
-                <a href="match/{{id}}">
-                    <article class="team-card">
-                        <figure>
-                            <img src="images/teams/{{id}}.png" alt="{{name}}">
-                            <figcaption>{{name}}</figcaption>
-                        </figure>
-                    </article>
-                </a>
-            {{/each}}
-        </section>
-    </main>
+    <section class="team-cards">
+        {{#each userTeams}}
+            <a href="match/{{id}}">
+                <article class="team-card">
+                    <figure>
+                        <img src="images/teams/{{id}}.png" alt="{{name}}">
+                        <figcaption>{{name}}</figcaption>
+                    </figure>
+                </article>
+            </a>
+        {{/each}}
+    </section>
 </main>
+<script src="/js/client.js"></script>
 </body>
 </html>

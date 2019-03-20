@@ -22,7 +22,7 @@ a, a:visited, a:hover, a:active {
 }
 
 main {
-    height: 100%;
+    height: auto;
 }
 
 .team-selector {
@@ -82,4 +82,41 @@ nav {
 .team-card figcaption {
     padding: 1em;
     font-weight: 700;
+}
+
+.match {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    flex-direction: column;
+}
+
+.team, .team figure, .team-goals, .teams-separator {
+    display: inline-block;
+}
+
+.team figure img {
+    width: 50%;
+    padding-bottom: 0.5em;
+}
+
+.team-goals {
+    padding: 1em;
+}
+
+.match-details {
+    flex-direction: row;
+    margin-top: 2em;
+}
+
+.teams-separator {
+    text-align: center;
+}
+
+.game-time {
+    margin-bottom: 1em;
+}
+
+.team {
+    text-align: center;
 }

@@ -6,30 +6,45 @@ class MatchSimulator {
         this.team1 = new Team(team1);
         this.team2 = new Team(team2);
         this.gameTime = new GameTime();
+        this.recentGoal = null;
+        this.goals = []
     }
 
-    start() {
+    start(options = {}) {
         setInterval(() => {
-            this.randomGoal();
-            this.cb && this.cb(this.getData());
+            const scored = this.randomGoal();
+
+            if (options.updateWhenScored) {
+                if (scored){
+
+                    this.cb && this.cb(this.getData());
+                }
+            } else {
+                this.cb && this.cb(this.getData());
+            }
+
         }, 1000);
     }
 
-    simulate(cb) {
+    simulate(cb, options = {}) {
         this.cb = cb;
-        this.start();
+        this.start(options);
     }
 
     randomGoal() {
-        if (MatchSimulator.chance(1)) {
+        if (MatchSimulator.chance(10)) {
             if (MatchSimulator.chance(50)) {
-                return this.team1.addGoal();
+                this.team1.addGoal();
+            } else {
+                this.team2.addGoal();
             }
-            this.team2.addGoal();
+            return true;
         }
+
+        return false;
     }
 
-    static chance(percentage){
+    static chance(percentage) {
         return Math.ceil(Math.random() * 100) <= percentage;
     }
 
@@ -39,7 +54,8 @@ class MatchSimulator {
             teams: {
                 team1: this.team1,
                 team2: this.team2
-            }
+            },
+            recentGoal: this.recentGoal
         }
     }
 }

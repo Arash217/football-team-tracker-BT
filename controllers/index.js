@@ -1,3 +1,4 @@
+const webpush = require("web-push");
 const MatchSimulator = require('../services/match-simulator');
 const {findTeams, getTeam, addTeamToUser, getUserTeams, getRandomTeam} = require('../services/database');
 
@@ -40,7 +41,7 @@ const match = async ctx => {
     const {team} = ctx.params;
 
     if (!gameMatch) {
-        gameMatch = new MatchSimulator(getTeam(team).name, getRandomTeam().name);
+        gameMatch = new MatchSimulator(getTeam(team), getRandomTeam());
         gameMatch.start();
     }
 
@@ -49,9 +50,50 @@ const match = async ctx => {
     });
 };
 
+let subscription = null;
+
+const publicVapidKey =
+    "BJthRQ5myDgc7OSXzPCMftGw-n16F7zQBEN7EUD6XxcfTTvrLGWSIG7y_JxiWtVlCFua0S8MTB5rPziBqNx1qIo";
+const privateVapidKey = "3KzvKasA2SoCxsp0iIG_o9B0Ozvl1XDwI63JRKNIWBM";
+
+webpush.setVapidDetails(
+    "mailto:test@test.com",
+    publicVapidKey,
+    privateVapidKey
+);
+
+const subscribe = async ctx => {
+    subscription = ctx.request.body;
+
+    ctx.status = 201;
+    ctx.body = {};
+
+    if (!gameMatch) {
+        gameMatch = gameMatch = new MatchSimulator(getRandomTeam(), getRandomTeam());
+
+        const options = {
+            updateWhenScored: true
+        };
+
+        gameMatch.simulate(data => {
+            const bodyMessage = `${data.teams.team1.name} ${data.teams.team1.goals} - ${data.teams.team2.name} ${data.teams.team2.goals}`;
+
+            const payload = JSON.stringify({
+                title: "Goal!",
+                body: bodyMessage
+            });
+
+            webpush
+                .sendNotification(subscription, payload)
+                .catch(err => console.error(err));
+        }, options);
+    }
+};
+
 module.exports = {
     home,
     addTeam,
     dashboard,
-    match
+    match,
+    subscribe
 };

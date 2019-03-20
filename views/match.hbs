@@ -2,25 +2,37 @@
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <noscript>
         <meta http-equiv="refresh" content="0.8">
     </noscript>
 </head>
 <body>
-<main>
-    <main>
-        <span>{{gameTime}}</span>
-        <div>
-            <span>{{teams.team1.name}}</span>
-            <span>{{teams.team1.goals}}</span>
+<nav>
+    <a href="/dashboard">Back to dashboard</a>
+</nav>
+<main class="match">
+    <div class="match-details">
+        <div class="team">
+            <figure>
+                <img src="/images/teams/{{teams.team1.id}}.png" alt="">
+                <figcaption>{{teams.team1.name}}</figcaption>
+            </figure>
+            <p class="team-goals">{{teams.team1.goals}}</p>
         </div>
-        <div>
-            <span>{{teams.team2.name}}</span>
-            <span>{{teams.team2.goals}}</span>
+        <div class="teams-separator">
+            <p class="game-time">{{gameTime}}</p>
+            <p>-</p>
         </div>
-    </main>
+        <div class="team">
+            <p class="team-goals">{{teams.team2.goals}}</p>
+            <figure>
+                <img src="/images/teams/{{teams.team2.id}}.png" alt="">
+                <figcaption>{{teams.team2.name}}</figcaption>
+            </figure>
+        </div>
+    </div>
 </main>
 </body>
 </html>
