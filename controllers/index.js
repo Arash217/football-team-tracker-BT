@@ -45,6 +45,8 @@ const match = async ctx => {
         gameMatch.start();
     }
 
+    console.log(gameMatch.getData());
+
     await ctx.render('match', {
         ...gameMatch.getData()
     });
@@ -76,7 +78,7 @@ const subscribe = async ctx => {
         };
 
         gameMatch.simulate(data => {
-            const bodyMessage = `${data.teams.team1.name} ${data.teams.team1.goals} - ${data.teams.team2.name} ${data.teams.team2.goals}`;
+            const bodyMessage = `${data.teams.team1.name} ${data.teams.team1.goals} - ${data.teams.team2.goals} ${data.teams.team2.name}`;
 
             const payload = JSON.stringify({
                 title: "Goal!",

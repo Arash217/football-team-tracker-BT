@@ -8,9 +8,7 @@ if ('serviceWorker' in navigator) {
 // Register SW, Register Push, Send Push
 async function send() {
     // Register Service Worker
-    const register = await navigator.serviceWorker.register('/js/worker.js', {
-        scope: '/js/'
-    });
+    const register = await navigator.serviceWorker.register('/js/worker.js');
 
     // Register Push
     const subscription = await register.pushManager.subscribe({

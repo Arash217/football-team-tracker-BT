@@ -120,3 +120,44 @@ nav {
 .team {
     text-align: center;
 }
+
+.match-timeline {
+    font-size: 0.6em;
+}
+
+.timeline-card {
+    display: grid;
+    background-color: #ededed;
+    margin: 1em;
+    padding: 1em;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    justify-content: center;
+}
+
+.timeline-score-time {
+    padding: 0.5em;
+}
+
+.timeline-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-team-name, .timeline-team-goals, .timeline-player-name, .timeline-player-team {
+    display: inline-block;
+}
+
+.timeline-team-name {
+    min-width: 5em;
+}
+
+.timeline-team-goals {
+    padding: 1em;
+}
+
+.timeline-player-team {
+    width: 2em;
+    margin: 0.5em;
+}

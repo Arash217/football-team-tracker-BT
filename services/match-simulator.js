@@ -1,3 +1,4 @@
+const faker = require('faker');
 const Team = require('../models/team');
 const GameTime = require('../models/game-time');
 
@@ -6,8 +7,7 @@ class MatchSimulator {
         this.team1 = new Team(team1);
         this.team2 = new Team(team2);
         this.gameTime = new GameTime();
-        this.recentGoal = null;
-        this.goals = []
+        this.timeline = []
     }
 
     start(options = {}) {
@@ -15,8 +15,7 @@ class MatchSimulator {
             const scored = this.randomGoal();
 
             if (options.updateWhenScored) {
-                if (scored){
-
+                if (scored) {
                     this.cb && this.cb(this.getData());
                 }
             } else {
@@ -32,12 +31,18 @@ class MatchSimulator {
     }
 
     randomGoal() {
-        if (MatchSimulator.chance(10)) {
+        if (MatchSimulator.chance(5)) {
+            let scoringTeam = null;
+            let opponentTeam = null;
             if (MatchSimulator.chance(50)) {
-                this.team1.addGoal();
+                scoringTeam = this.team1;
+                opponentTeam = this.team2;
             } else {
-                this.team2.addGoal();
+                scoringTeam = this.team2;
+                opponentTeam = this.team1;
             }
+            scoringTeam.addGoal();
+            this.addToTimeline(scoringTeam, opponentTeam);
             return true;
         }
 
@@ -48,6 +53,15 @@ class MatchSimulator {
         return Math.ceil(Math.random() * 100) <= percentage;
     }
 
+    addToTimeline(scoringTeam, opponentTeam) {
+        this.timeline.push({
+            scoreTime: this.gameTime.getElapsedTime(),
+            player: faker.name.findName(),
+            scoringTeam: {...scoringTeam},
+            opponentTeam: {...opponentTeam}
+        })
+    }
+
     getData() {
         return {
             gameTime: this.gameTime.getElapsedTime(),
@@ -55,7 +69,7 @@ class MatchSimulator {
                 team1: this.team1,
                 team2: this.team2
             },
-            recentGoal: this.recentGoal
+            timeline: this.timeline
         }
     }
 }
