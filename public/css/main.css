@@ -104,6 +104,33 @@ nav {
 .team-playing {
     color: red;
     display: inline-block;
+    position: relative;
+}
+
+.team-playing:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    border: 1px solid red;
+    animation-name: highlight;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes highlight {
+    from {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1.9);
+        opacity: 0;
+    }
 }
 
 .team-goals {

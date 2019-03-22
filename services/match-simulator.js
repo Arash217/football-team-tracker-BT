@@ -1,4 +1,5 @@
 const faker = require('faker');
+const FifoArray = require('fifo-array');
 const Team = require('../models/team');
 const GameTime = require('../models/game-time');
 
@@ -7,7 +8,7 @@ class MatchSimulator {
         this.team1 = new Team(team1);
         this.team2 = new Team(team2);
         this.gameTime = new GameTime();
-        this.timeline = []
+        this.timeline = new FifoArray(3);
     }
 
     start(options = {}) {
@@ -31,7 +32,7 @@ class MatchSimulator {
     }
 
     randomGoal() {
-        if (MatchSimulator.chance(5)) {
+        if (MatchSimulator.chance(2)) {
             let scoringTeam = null;
             let opponentTeam = null;
             if (MatchSimulator.chance(50)) {
@@ -54,7 +55,7 @@ class MatchSimulator {
     }
 
     addToTimeline(scoringTeam, opponentTeam) {
-        this.timeline.push({
+        this.timeline.unshift({
             scoreTime: this.gameTime.getElapsedTime(),
             player: faker.name.findName(),
             scoringTeam: {...scoringTeam},

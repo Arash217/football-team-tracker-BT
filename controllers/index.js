@@ -29,22 +29,23 @@ const addTeam = async ctx => {
 };
 
 let gameMatch = null;
+let userTeams = getUserTeams();
 
 const dashboard = async ctx => {
-    let userTeams = getUserTeams();
-    const team1 = getRandomUserTeam();
-    const team2 = getRandomTeam();
-
     if (!gameMatch) {
-        gameMatch = new MatchSimulator(team1, team2);
-    }
+        const team1 = getRandomUserTeam();
+        const team2 = getRandomTeam();
 
-    userTeams = userTeams.map(userTeam => {
-        if (userTeam.id === team1.id || userTeam.id === team2.id) {
-            userTeam.playing = true;
-        }
-        return userTeam;
-    });
+        gameMatch = new MatchSimulator(team1, team2);
+
+        userTeams = userTeams.map(userTeam => {
+            const tempTeam = {...userTeam};
+            if (tempTeam.id === gameMatch.team1.id || tempTeam.id === gameMatch.team2.id) {
+                tempTeam.playing = true;
+            }
+            return tempTeam;
+        });
+    }
 
     await ctx.render('dashboard', {
         userTeams
