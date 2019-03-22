@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js -e hbs",
+    "dev": "nodemon server.js -e hbs,css",
     "prebuild": "rimraf public && make-dir public/css",
     "minify:css": "cleancss -O2 -o public/css/main.min.css resources/css/main.css",
     "compress": "bread-compressor --brotli-quality=11 public",
