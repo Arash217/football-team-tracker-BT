@@ -1,6 +1,6 @@
 const webpush = require("web-push");
 const MatchSimulator = require('../services/match-simulator');
-const {findTeams, getTeam, addTeamToUser, getUserTeams, getRandomTeam} = require('../services/database');
+const {findTeams, getTeam, addTeamToUser, getUserTeams, getRandomTeam, getRandomUserTeam} = require('../services/database');
 
 const home = async ctx => {
     const {search = ''} = ctx.query;
@@ -28,27 +28,41 @@ const addTeam = async ctx => {
     }
 };
 
+let gameMatch = null;
+
 const dashboard = async ctx => {
-    const userTeams = getUserTeams();
+    let userTeams = getUserTeams();
+    const team1 = getRandomUserTeam();
+    const team2 = getRandomTeam();
+
+    if (!gameMatch) {
+        gameMatch = new MatchSimulator(team1, team2);
+    }
+
+    userTeams = userTeams.map(userTeam => {
+        if (userTeam.id === team1.id || userTeam.id === team2.id) {
+            userTeam.playing = true;
+        }
+        return userTeam;
+    });
+
     await ctx.render('dashboard', {
         userTeams
     });
 };
 
-let gameMatch = null;
-
 const match = async ctx => {
-    const {team} = ctx.params;
+    let {team} = ctx.params;
+    team = Number(team);
 
-    if (!gameMatch) {
-        gameMatch = new MatchSimulator(getTeam(team), getRandomTeam());
-        gameMatch.start();
+    if (gameMatch && gameMatch.team1.id === team || gameMatch.team2.id === team) {
+        return await ctx.render('match', {
+            ...gameMatch.getData()
+        });
     }
 
-    console.log(gameMatch.getData());
-
-    await ctx.render('match', {
-        ...gameMatch.getData()
+    await ctx.render('error', {
+        errorMessage: 'Team is not playing'
     });
 };
 
@@ -70,9 +84,7 @@ const subscribe = async ctx => {
     ctx.status = 201;
     ctx.body = {};
 
-    if (!gameMatch) {
-        gameMatch = gameMatch = new MatchSimulator(getRandomTeam(), getRandomTeam());
-
+    if (gameMatch) {
         const options = {
             updateWhenScored: true
         };

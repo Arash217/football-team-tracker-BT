@@ -73,6 +73,7 @@ nav {
     transition: 0.1s;
     transition-property: transform;
     border: 1px solid #c4c4c4;
+    flex-direction: column;
 }
 
 .team-card:hover {
@@ -98,6 +99,11 @@ nav {
 .team figure img {
     width: 50%;
     padding-bottom: 0.5em;
+}
+
+.team-playing {
+    color: red;
+    display: inline-block;
 }
 
 .team-goals {

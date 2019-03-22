@@ -26,6 +26,11 @@ const getUserTeams = () => {
     return getTeams().filter(team => userTeamsIds.some(userTeam => userTeam.id === team.id))
 };
 
+const getRandomUserTeam = () => {
+    const teams = getUserTeams();
+    return teams[Math.floor(Math.random() * teams.length)];
+};
+
 const addTeamToUser = teamId => {
     teamId = Number(teamId);
 
@@ -45,5 +50,6 @@ module.exports = {
     addTeamToUser,
     getUserTeams,
     getRandomTeam,
-    getTeam
+    getTeam,
+    getRandomUserTeam
 };

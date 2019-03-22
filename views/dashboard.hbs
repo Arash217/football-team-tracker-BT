@@ -18,6 +18,9 @@
                         <img src="images/teams/{{id}}.png" alt="{{name}}">
                         <figcaption>{{name}}</figcaption>
                     </figure>
+                    {{#if playing}}
+                        <p class="team-playing">Playing</p>
+                    {{/if}}
                 </article>
             </a>
         {{/each}}
