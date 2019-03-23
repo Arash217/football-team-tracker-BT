@@ -9,7 +9,7 @@
     "minify:css": "cleancss -O2 -o public/css/main.min.css resources/css/main.css",
     "compress": "bread-compressor --brotli-quality=11 public",
     "build": "run-s prebuild minify:* compress",
-    "start": "npm run build && node server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
