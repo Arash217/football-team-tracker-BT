@@ -1,3 +1,4 @@
+require('dotenv').config();
 const hbs = require('koa-hbs');
 const Koa = require('koa');
 const serve = require('koa-static');
@@ -32,7 +33,7 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 /* Use port given from environment variable or the default */
-const port = process.env.PORT || 3000;
+const httpPort = process.env.HTTP_PORT || 3000;
 
 /* Start server with given port */
-app.listen(port);
+app.listen(httpPort, () => console.log(`HTTP started on port ${httpPort}`));
