@@ -26,6 +26,13 @@ app.use(hbs.middleware({
     partialsPath: path.join(__dirname, 'views/partials')
 }));
 
+hbs.registerHelper('output', function(partial, context) {
+    // Create compiler function for said partial
+    var output = Handlebars.compile(Handlebars.partials[partial]);
+    // Return compiled output using said context
+    return output(context);
+});
+
 /* Register all middleware */
 app.use(middlewares);
 
