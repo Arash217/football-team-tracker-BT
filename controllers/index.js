@@ -1,6 +1,6 @@
 const webpush = require("web-push");
 const MatchSimulator = require('../services/match-simulator');
-const {findTeams, getTeam, addTeamToUser, getUserTeams, getRandomTeam, getRandomUserTeam} = require('../services/database');
+const {findTeams, addTeamToUser, getUserTeams, getRandomTeam, getRandomUserTeam} = require('../services/database');
 
 const home = async ctx => {
     const {search = ''} = ctx.query;
@@ -29,23 +29,26 @@ const addTeam = async ctx => {
 };
 
 let gameMatch = null;
-let userTeams = getUserTeams();
+let team1 = null;
+let team2 = null;
 
 const dashboard = async ctx => {
+    let userTeams = getUserTeams();
+
     if (!gameMatch) {
-        const team1 = getRandomUserTeam();
-        const team2 = getRandomTeam();
-
+        team1 = getRandomUserTeam();
+        team2 = getRandomTeam();
         gameMatch = new MatchSimulator(team1, team2);
-
-        userTeams = userTeams.map(userTeam => {
-            const tempTeam = {...userTeam};
-            if (tempTeam.id === gameMatch.team1.id || tempTeam.id === gameMatch.team2.id) {
-                tempTeam.playing = true;
-            }
-            return tempTeam;
-        });
+        gameMatch.start();
     }
+
+    userTeams = userTeams.map(userTeam => {
+        const tempTeam = {...userTeam};
+        if (tempTeam.id === gameMatch.team1.id || tempTeam.id === gameMatch.team2.id) {
+            tempTeam.playing = true;
+        }
+        return tempTeam;
+    });
 
     await ctx.render('dashboard', {
         userTeams
@@ -82,7 +85,7 @@ webpush.setVapidDetails(
 const subscribe = async ctx => {
     subscription = ctx.request.body;
 
-    ctx.status = 201;
+    ctx.status = 200;
     ctx.body = {};
 
     if (gameMatch) {
@@ -105,10 +108,19 @@ const subscribe = async ctx => {
     }
 };
 
+const socketHandler = socket => {
+    if (gameMatch) {
+        gameMatch.simulate(data => {
+            socket.emit('matchData', data);
+        });
+    }
+};
+
 module.exports = {
     home,
     addTeam,
     dashboard,
     match,
-    subscribe
+    subscribe,
+    socketHandler
 };

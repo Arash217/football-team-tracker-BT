@@ -9,9 +9,12 @@ class MatchSimulator {
         this.team2 = new Team(team2);
         this.gameTime = new GameTime();
         this.timeline = new FifoArray(3);
+        this.gameStarted = false;
     }
 
     start(options = {}) {
+        this.gameStarted = true;
+
         setInterval(() => {
             const scored = this.randomGoal();
 
@@ -28,11 +31,11 @@ class MatchSimulator {
 
     simulate(cb, options = {}) {
         this.cb = cb;
-        this.start(options);
+        !this.gameStarted && this.start(options);
     }
 
     randomGoal() {
-        if (MatchSimulator.chance(2)) {
+        if (MatchSimulator.chance(5)) {
             let scoringTeam = null;
             let opponentTeam = null;
             if (MatchSimulator.chance(50)) {
