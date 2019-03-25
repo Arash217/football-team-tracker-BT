@@ -11,7 +11,7 @@ class MatchSimulator {
         this.timeline = new FifoArray(3);
         this.gameStarted = false;
         this.scored = false;
-        this.callbacks = [];
+        this.observers = [];
     }
 
     start() {
@@ -19,19 +19,19 @@ class MatchSimulator {
 
         setInterval(() => {
             this.randomGoal();
-            if (this.callbacks.length > 0){
-                this.callbacks.forEach(callback => callback(this.getData()));
+            if (this.observers.length > 0){
+                this.observers.forEach(observer => observer(this.getData()));
             }
         }, 1000);
     }
 
     simulate(cb) {
-        this.callbacks.push(cb);
+        this.observers.push(cb);
         !this.gameStarted && this.start();
     }
 
     randomGoal() {
-        if (MatchSimulator.chance(2)) {
+        if (MatchSimulator.chance(10)) {
             let scoringTeam = null;
             let opponentTeam = null;
             if (MatchSimulator.chance(50)) {
