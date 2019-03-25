@@ -21,26 +21,63 @@ a, a:visited, a:hover, a:active {
     color: inherit;
 }
 
-main {
-    height: auto;
-}
-
 .team-selector {
-    height: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-top: 2em;
 }
 
-.team-selector header p {
+.team-selector header img {
+    width: 250px;
+}
+
+.team-selector p {
     margin: 1em;
-    display: inline-block;
 }
 
 .team-selector input {
     font-size: 1em;
-    padding: 0.2em;
+}
+
+.teams-form ul {
+    list-style-type: none;
+}
+
+.teams-form ul li {
+    margin-bottom: 0.5em;
+}
+
+.teams-search-form, .teams-form {
+    width: 300px;
+}
+
+.teams-search-form input {
+    padding: 0.5em;
+}
+
+.teams-form {
+    padding: 1em;
+    box-shadow: 0 0 5px #c4c4c4;
+}
+
+.teams-form-label, .teams-form-input{
+    display: inline-block;
+}
+
+.teams-form-submit-button {
+    padding: 0.5em;
+    display: block;
+    margin: auto;
+    background-color: #271d66;
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+.teams-search-form input {
+    width: 100%;
 }
 
 nav {

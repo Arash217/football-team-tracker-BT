@@ -94,16 +94,18 @@ const subscribe = async ctx => {
         };
 
         gameMatch.simulate(data => {
-            const bodyMessage = `${data.teams.team1.name} ${data.teams.team1.goals} - ${data.teams.team2.goals} ${data.teams.team2.name}`;
+            if (data.scored){
+                const bodyMessage = `${data.teams.team1.name} ${data.teams.team1.goals} - ${data.teams.team2.goals} ${data.teams.team2.name}`;
 
-            const payload = JSON.stringify({
-                title: "Goal!",
-                body: bodyMessage
-            });
+                const payload = JSON.stringify({
+                    title: "Goal!",
+                    body: bodyMessage
+                });
 
-            webpush
-                .sendNotification(subscription, payload)
-                .catch(err => console.error(err));
+                webpush
+                    .sendNotification(subscription, payload)
+                    .catch(err => console.error(err));
+            }
         }, options);
     }
 };
