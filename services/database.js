@@ -18,7 +18,8 @@ const getRandomTeam = () => {
 };
 
 const findTeams = search => {
-    return getTeams().filter(team => team.name.toLowerCase().includes(search.toLowerCase()));
+    const unaddedTeams = getTeams().filter(team => !getUserTeams().some(userTeam => team.id === userTeam.id));
+    return unaddedTeams.filter(team => team.name.toLowerCase().includes(search.toLowerCase()));
 };
 
 const getUserTeams = () => {

@@ -26,7 +26,7 @@ app.use(hbs.middleware({
     partialsPath: path.join(__dirname, 'views/partials')
 }));
 
-hbs.registerHelper('raw', function(options) {
+hbs.registerHelper('raw', options => {
     return options.fn(this);
 });
 

@@ -17,7 +17,7 @@ a {
     text-decoration: none;
 }
 
-a, a:visited, a:hover, a:active {
+a:link, a:visited, a:hover {
     color: inherit;
 }
 
@@ -35,10 +35,15 @@ a, a:visited, a:hover, a:active {
 
 .team-selector p {
     margin: 1em;
+    text-align: center;
 }
 
 .team-selector input {
     font-size: 1em;
+}
+
+.team-selector label {
+    cursor: pointer;
 }
 
 .teams-form ul {
@@ -49,12 +54,17 @@ a, a:visited, a:hover, a:active {
     margin-bottom: 0.5em;
 }
 
+.teams-form input {
+    cursor: pointer;
+}
+
 .teams-search-form, .teams-form {
     width: 300px;
 }
 
 .teams-search-form input {
     padding: 0.5em;
+    width: 100%;
 }
 
 .teams-form {
@@ -67,17 +77,14 @@ a, a:visited, a:hover, a:active {
 }
 
 .teams-form-submit-button {
-    padding: 0.5em;
+    padding: 0 1em;
     display: block;
     margin: auto;
     background-color: #271d66;
     color: white;
     border: 0;
     cursor: pointer;
-}
-
-.teams-search-form input {
-    width: 100%;
+    height: 2em;
 }
 
 nav {
@@ -86,8 +93,14 @@ nav {
     color: white;
     display: flex;
     align-items: center;
-    padding-left: 1em;
-    font-weight: 700;
+}
+
+.link {
+    color: white;
+    padding: 0 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .team-cards {

@@ -11,15 +11,17 @@ const home = async ctx => {
     }
 
     await ctx.render('home', {
-        teams: filteredTeams
+        teams: filteredTeams,
+        search
     });
 };
 
 const addTeam = async ctx => {
-    const {team} = ctx.request.body;
-
+    const data = ctx.request.body;
     try {
-        addTeamToUser(team);
+        Object.keys(data).forEach(key => {
+            addTeamToUser(data[key]);
+        });
         ctx.redirect('/dashboard');
     } catch (e) {
         await ctx.render('error', {

@@ -4,6 +4,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="/css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <main>
@@ -16,12 +17,13 @@
         </header>
 
         <form action="/" method="get" class="teams-search-form">
-            <input name="search" type="text" placeholder="Ajax for example...">
+            <input name="search" type="text" placeholder="Ajax for example..." value="{{search}}">
         </form>
         {{> teams-form }}
-
         <p>or</p>
-        <a href="/dashboard">to dashboard</a>
+        <nav>
+            <a href="/dashboard" class="link">To dashboard</a>
+        </nav>
     </section>
 </main>
 </body>
