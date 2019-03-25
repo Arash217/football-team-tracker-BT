@@ -28,7 +28,7 @@ app.use(hbs.middleware({
 
 hbs.registerHelper('output', function(partial, context) {
     // Create compiler function for said partial
-    var output = Handlebars.compile(Handlebars.partials[partial]);
+    const output = Handlebars.compile(Handlebars.partials[partial]);
     // Return compiled output using said context
     return output(context);
 });
