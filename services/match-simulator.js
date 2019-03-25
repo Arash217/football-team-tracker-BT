@@ -10,32 +10,28 @@ class MatchSimulator {
         this.gameTime = new GameTime();
         this.timeline = new FifoArray(3);
         this.gameStarted = false;
+        this.scored = false;
+        this.callbacks = [];
     }
 
-    start(options = {}) {
+    start() {
         this.gameStarted = true;
 
         setInterval(() => {
-            const scored = this.randomGoal();
-
-            if (options.updateWhenScored) {
-                if (scored) {
-                    this.cb && this.cb(this.getData());
-                }
-            } else {
-                this.cb && this.cb(this.getData());
+            this.randomGoal();
+            if (this.callbacks.length > 0){
+                this.callbacks.forEach(callback => callback(this.getData()));
             }
-
         }, 1000);
     }
 
-    simulate(cb, options = {}) {
-        this.cb = cb;
-        !this.gameStarted && this.start(options);
+    simulate(cb) {
+        this.callbacks.push(cb);
+        !this.gameStarted && this.start();
     }
 
     randomGoal() {
-        if (MatchSimulator.chance(5)) {
+        if (MatchSimulator.chance(2)) {
             let scoringTeam = null;
             let opponentTeam = null;
             if (MatchSimulator.chance(50)) {
@@ -47,10 +43,10 @@ class MatchSimulator {
             }
             scoringTeam.addGoal();
             this.addToTimeline(scoringTeam, opponentTeam);
-            return true;
+            this.scored = true;
+            return;
         }
-
-        return false;
+        this.scored = false;
     }
 
     static chance(percentage) {
@@ -73,7 +69,8 @@ class MatchSimulator {
                 team1: this.team1,
                 team2: this.team2
             },
-            timeline: this.timeline
+            timeline: this.timeline,
+            scored: this.scored
         }
     }
 }
