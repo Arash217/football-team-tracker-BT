@@ -25,13 +25,13 @@ class MatchSimulator {
         }, 1000);
     }
 
-    simulate(cb) {
-        this.observers.push(cb);
+    simulate(observer) {
+        this.observers.push(observer);
         !this.gameStarted && this.start();
     }
 
     randomGoal() {
-        if (MatchSimulator.chance(10)) {
+        if (MatchSimulator.chance(5)) {
             let scoringTeam = null;
             let opponentTeam = null;
             if (MatchSimulator.chance(50)) {
