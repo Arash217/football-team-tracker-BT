@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="/css/main.css">
@@ -9,15 +9,19 @@
 <main>
     <section class="team-selector">
         <header>
-            <img src="images/eredivisie.svg" alt="eredivisie">
+            <img src="images/eredivisie.svg" alt="eredivisie" class="eredivisie-logo">
             <p>
-                  Add your favorite team!
+                Add your favorite team!
             </p>
         </header>
-        <form action="/" method="get">
+
+        <form action="/" method="get" class="teams-search-form">
             <input name="search" type="text" placeholder="Ajax for example...">
         </form>
         {{> teams-form }}
+
+        <p>or</p>
+        <a href="/dashboard">to dashboard</a>
     </section>
 </main>
 </body>
