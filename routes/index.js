@@ -5,6 +5,7 @@ const router = new Router();
 
 router.get('/', controller.home);
 router.post('/dashboard', controller.addTeam);
+router.post('/search', controller.search);
 router.get('/dashboard', controller.dashboard);
 router.get('/match/:team', controller.match);
 router.post('/subscribe', controller.subscribe);

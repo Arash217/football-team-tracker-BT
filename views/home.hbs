@@ -17,14 +17,17 @@
         </header>
 
         <form action="/" method="get" class="teams-search-form">
-            <input name="search" type="text" placeholder="Ajax for example..." value="{{search}}">
+            <input id="search-input" name="search" type="text" placeholder="Ajax for example..." value="{{search}}" autocomplete="off">
         </form>
-        {{> teams-form }}
+        <div id="teams-form-container">
+            {{> teams-form }}
+        </div>
         <p>or</p>
         <nav>
             <a href="/dashboard" class="link">To dashboard</a>
         </nav>
     </section>
 </main>
+<script src="/js/search.js"></script>
 </body>
 </html>

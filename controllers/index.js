@@ -16,6 +16,20 @@ const home = async ctx => {
     });
 };
 
+const search = async ctx => {
+    const {body} = ctx.request;
+    const {search} = JSON.parse(body);
+    let filteredTeams = [];
+
+    if (search) {
+        filteredTeams = findTeams(search);
+    }
+
+    await ctx.render('search', {
+        teams: filteredTeams
+    });
+};
+
 const addTeam = async ctx => {
     const data = ctx.request.body;
     try {
@@ -124,6 +138,7 @@ module.exports = {
     home,
     addTeam,
     dashboard,
+    search,
     match,
     subscribe,
     socketHandler
