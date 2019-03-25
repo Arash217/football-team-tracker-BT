@@ -10,7 +10,6 @@ const inputEventHandler = async function (e) {
     });
 
     const html = await res.text();
-
     removeChildren(teamsFormContainer);
     teamsFormContainer.insertAdjacentHTML('afterbegin', html)
 };
