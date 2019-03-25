@@ -35,10 +35,34 @@
     </div>
     <div class="match-timeline">
         {{> match-timeline}}
-        <script id="match-timeline-template" type="text/x-handlebars-template">
-            {{> match-timeline }}
-        </script>
     </div>
+    <script id="match-timeline-template" type="text/x-handlebars-template">
+        {{{{raw}}}}
+            {{#each timeline}}
+            <div class="timeline-card">
+                <div>
+                    <div class="team">
+                        <p class="timeline-team-name">{{scoringTeam.name}}</p>
+                        <p class="timeline-team-goals">{{scoringTeam.goals}}</p>
+                    </div>
+                    <div class="teams-separator">
+                        <p>Goal!</p>
+                        <p class="timeline-score-time">{{scoreTime}}</p>
+                        <p>-</p>
+                    </div>
+                    <div class="team">
+                        <p class="timeline-team-goals">{{opponentTeam.goals}}</p>
+                        <p class="timeline-team-name">{{opponentTeam.name}}</p>
+                    </div>
+                </div>
+                <div class="timeline-player">
+                    <p class="timeline-player-name">{{player}}</p>
+                    <img src="/images/teams/{{scoringTeam.id}}.png" alt="{{scoringTeam.name}}" class="timeline-player-team">
+                </div>
+            </div>
+            {{/each}}
+        {{{{/raw}}}}
+    </script>
 </main>
 <script src="/js/handlebars.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
