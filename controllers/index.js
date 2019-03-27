@@ -105,10 +105,6 @@ const subscribe = async ctx => {
     ctx.body = {};
 
     if (gameMatch) {
-        const options = {
-            updateWhenScored: true
-        };
-
         gameMatch.simulate(data => {
             if (data.scored){
                 const bodyMessage = `${data.teams.team1.name} ${data.teams.team1.goals} - ${data.teams.team2.goals} ${data.teams.team2.name}`;
@@ -122,7 +118,7 @@ const subscribe = async ctx => {
                     .sendNotification(subscription, payload)
                     .catch(err => console.error(err));
             }
-        }, options);
+        });
     }
 };
 
