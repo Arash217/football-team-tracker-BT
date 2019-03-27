@@ -31,7 +31,7 @@ class MatchSimulator {
     }
 
     randomGoal() {
-        if (MatchSimulator.chance(5)) {
+        if (this.gameTime.getTime() % 30 === 0) {
             let scoringTeam = null;
             let opponentTeam = null;
             if (MatchSimulator.chance(50)) {
@@ -55,7 +55,7 @@ class MatchSimulator {
 
     addToTimeline(scoringTeam, opponentTeam) {
         this.timeline.unshift({
-            scoreTime: this.gameTime.getElapsedTime(),
+            scoreTime: this.gameTime.getFormattedTime(),
             player: faker.name.findName(),
             scoringTeam: {...scoringTeam},
             opponentTeam: {...opponentTeam}
@@ -64,7 +64,7 @@ class MatchSimulator {
 
     getData() {
         return {
-            gameTime: this.gameTime.getElapsedTime(),
+            gameTime: this.gameTime.getFormattedTime(),
             teams: {
                 team1: this.team1,
                 team2: this.team2

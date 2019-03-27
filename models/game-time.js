@@ -5,7 +5,7 @@ class GameTime {
         this.initialTime = moment();
     }
 
-    getElapsedTime() {
+    getFormattedTime() {
         const timeNow = moment();
         const duration = moment.duration(timeNow.diff(this.initialTime));
 
@@ -13,6 +13,12 @@ class GameTime {
         const seconds = duration.seconds();
 
         return `${GameTime.pad(minutes)}:${GameTime.pad(seconds)}`;
+    }
+
+    getTime(){
+        const timeNow = moment();
+        const duration = moment.duration(timeNow.diff(this.initialTime));
+        return duration.seconds();
     }
 
     static pad(time) {
