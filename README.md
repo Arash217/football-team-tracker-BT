@@ -40,10 +40,15 @@ Sketches of my initial idea:
   <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/3.png">
 </p>
 
-## 3. Progressive enhancement
+## 3. Core functionality
+The core functionality of the app is to see/receive notifications when your favorite team scores, as you can see in my notifications sketch.
 
-### 3.1 Functional and reliable
+Initialy, I had the idea of showing also other match stats, but I didn't had time to realise it, so I scraped it.
 
-### 3.2 Usable
+## 4. Progressive enhancement
 
-### 3.3 Pleasurable
+### 4.1 Functional and reliable
+
+### 4.2 Usable
+
+### 4.3 Pleasurable
