@@ -78,68 +78,27 @@ Now we're talking! We get push notifications when a team scores. Also the page i
 
 ### 5.1 Images
 
-##### Context
-The webapp uses besides images that are loaded by an API in the details page, only a png image for the 'click to scan' button on the homepage. SVG is used for everything else.
-
-##### Tests
-By disabling images in my browser, the image of the 'click to scan' button disappeared along with the images on the details page that are requested by the API.
-
-##### Solution(s)
-The image of the 'click to scan' button converted to a SVG since it should have been a SVG like the rest anyway. The images on the details page had already an alt tag so didn't change anything there.
+The webapp uses images on the search, dashboard and match page.
+When the images are disabled, the alt tags are shown.
 
 ### 5.2 Custom Fonts
 
-##### Context
 The webapp uses the Open Sans font for all pages.
-
-##### Tests
-By disabling the custom font, the default sans-serif font of the browser will be used. 
-While this is not a big issue since the Open Sans is a sans-serif font, 
-it would be nicer to have a fallback that would look similar to Open Sans 
-and not the default font of the browser that would cause the website to look different on different systems/browsers.
-
-##### Solution(s)
-Added the Verdana font family as fallback since it looks similar to Open Sans. The sans-serif is still used as the last fallback.
+When disabling the custom font, the Verdana font family will be used. 
+I chose this font family because it's a web-safe font and because it looks similar to Open Sans.
+If Verdana is not supported, the fallback will be the default sans-serif font family of the browser.
 
 ### 5.3 Colors
 
-##### Context
-The webapp uses white and different shades of turquoise as colors.
 
-##### Tests
-Tested the website for the different types of color blindness:
-- Protanopia
-- Deuteranopia
-- Tritanopia
-- Monochromacy
 
-There weren't any issues, because there is enough contrast between the colors.
+### 5.4 Bandwidth
 
-##### Solution(s)
-No solutions implemented, because there weren't any issues.
 
-## 5.4 Bandwidth
-
-##### Context
-The webapp is a SPA and is built by using vanilla JavaScript, JavaScript libraries, CSS and SVG.
-
-##### Tests
-I used the Chrome developer tools to simulate a slow 3G network, while disabling cache.
-It took 18.87 seconds for the browser to load all the required files and to render the homepage of the webapp.
-All the required files were totally 222kb.
-
-##### Solution(s)
-It would have been a good idea to render the app server-side so that there can be optimizations.
-For example, the webapp's JavaScript files and CSS files could be minified and compressed.
-I would also like to add skeleton screens to improve perceived performance.
 
 ### 5.5 Mouse/Trackpad
 
-##### Tests
-- The 'click to scan' button on the homepage worked with keyboard only, meaning that I could navigate to the next page.
-Not surprisingly since the button is actually an a tag.
-- The toggle flashlight button on the scan page doesn't work for keyboard since it's a SVG.
-- Can't play tracks on the details page because the eventlistener is attached to a div and not a button.
+
 
 ### 5.6 JavaScript
 
@@ -157,7 +116,7 @@ No JavaScript used on this page.
 #### Match Page
 Push notifications and websockets work when JavaScript is enabled.
 When JavaScript is disabled, I use a noscript tag with http-equiv="refresh" to request a new page from the server.
-This way the page still can show the scores and the notifications.
+This way the page still can show the updated scores and notifications.
 
 ### 5.7 Cookies
 Webapp doesn't use cookies.
