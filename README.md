@@ -25,12 +25,17 @@ npm start
 ## 2. Wireflow
 Sketches of my initial idea:
 
-![1](../master/docs/1.png)
-
-![2](../master/docs/2.png)
-
-![3](../master/docs/3.png)
-
+Search page:
 <p align="center">
   <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/1.png">
+</p>
+
+Dashboard:
+<p align="center">
+  <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/2.png">
+</p>
+
+Notifications:
+<p align="center">
+  <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/3.png">
 </p>
