@@ -79,7 +79,7 @@ Now we're talking! We get push notifications when a team scores. Also the page i
 ### 5.1 Images
 
 The webapp uses images on the search, dashboard and match page.
-When the images are disabled, the alt tags are shown.
+When the images are disabled, content of the alt attributes are shown.
 
 ### 5.2 Custom Fonts
 
