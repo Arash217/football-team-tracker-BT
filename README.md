@@ -20,3 +20,13 @@ npm install
 Run the server (will use port 3200)
 ```bash
 npm start
+```
+
+## 2. Wireflow
+Sketches of my initial idea:
+
+![1](../master/docs/1.jpg)
+
+![2](../master/docs/2.jpg)
+
+![3](../master/docs/3.jpg)
