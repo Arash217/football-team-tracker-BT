@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/main.css">
+    <title>Match</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/main.css">
     <noscript>
         <meta http-equiv="refresh" content="0.9">
     </noscript>
@@ -16,7 +17,7 @@
     <div class="match-details">
         <div class="team">
             <figure>
-                <img src="/images/teams/{{teams.team1.id}}.png" alt="">
+                <img src="/images/teams/{{teams.team1.id}}.png" alt="{{teams.team1.name}}">
                 <figcaption>{{teams.team1.name}}</figcaption>
             </figure>
             <p class="team-goals team1-goals">{{teams.team1.goals}}</p>
@@ -28,7 +29,7 @@
         <div class="team">
             <p class="team-goals team2-goals">{{teams.team2.goals}}</p>
             <figure>
-                <img src="/images/teams/{{teams.team2.id}}.png" alt="">
+                <img src="/images/teams/{{teams.team2.id}}.png" alt="{{teams.team2.name}}">
                 <figcaption>{{teams.team2.name}}</figcaption>
             </figure>
         </div>
