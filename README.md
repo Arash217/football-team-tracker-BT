@@ -26,7 +26,7 @@ npm start
 Sketches of my initial idea:
 
 Search:
-<p align="center">
+<p>
   <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/1.png">
 </p>
 
