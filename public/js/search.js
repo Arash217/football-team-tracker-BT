@@ -1,24 +1,24 @@
-const searchInput = document.querySelector('#search-input');
-const teamsFormContainer = document.querySelector('#teams-form-container');
-const searchButton = document.querySelector('#search-button');
+var searchInput = document.getElementById('#search-input');
+var teamsFormContainer = document.getElementById('#teams-form-container');
+var searchButton = document.getElementById('#search-button');
 
 searchButton.style.display = 'none';
 
-const inputEventHandler = async function (e) {
-    const res = await fetch('/search', {
+var inputEventHandler = async function (e) {
+    var res = await fetch('/search', {
         method: 'POST',
         body: JSON.stringify({
             search: e.target.value
         })
     });
 
-    const html = await res.text();
+    var html = await res.text();
     removeChildren(teamsFormContainer);
     teamsFormContainer.insertAdjacentHTML('afterbegin', html)
 };
 
-const debounce = (fn, wait) => {
-    let timeout;
+var debounce = (fn, wait) => {
+    var timeout;
     return (...args) => {
         clearTimeout(timeout);
         timeout = setTimeout(() => {

@@ -1,11 +1,28 @@
 var socket = io();
 
-var gameTime = document.querySelector('.game-time');
-var team1Goals = document.querySelector('.team1-goals');
-var team2Goals = document.querySelector('.team2-goals');
+var gameTime;
+var team1Goals;
+var team2Goals;
 
-var source = document.getElementById("match-timeline-template").innerHTML;
-var target = document.querySelector(".match-timeline");
+var source;
+var target;
+
+if ('querySelector' in document){
+    gameTime = document.querySelector('.game-time');
+    team1Goals = document.querySelector('.team1-goals');
+    team2Goals = document.querySelector('.team2-goals');
+
+    source = document.querySelector("#match-timeline-template").innerHTML;
+    target = document.querySelector(".match-timeline");
+} else {
+    gameTime = document.getElementsByClassName('.game-time')[0];
+    team1Goals = document.getElementsByClassName('.team1-goals')[0];
+    team2Goals = document.getElementsByClassName('.team2-goals')[0];
+
+    source = document.getElementById("match-timeline-template").innerHTML;
+    target = document.getElementsByClassName(".match-timeline")[0];
+}
+
 var template = Handlebars.compile(source);
 
 socket.on('matchData', function (data) {

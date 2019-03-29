@@ -1,29 +1,25 @@
 var publicVapidKey = 'BJthRQ5myDgc7OSXzPCMftGw-n16F7zQBEN7EUD6XxcfTTvrLGWSIG7y_JxiWtVlCFua0S8MTB5rPziBqNx1qIo';
 
-// Check for service worker
 if ('serviceWorker' in navigator) {
-    send().catch(err => console.error(err));
+    send();
 }
 
-// Register SW, Register Push, Send Push
-async function send() {
-    // Register Service Worker
-    const register = await navigator.serviceWorker.register('/js/worker.js');
-
-    // Register Push
-    const subscription = await register.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
-    });
-
-    // Send Push Notification
-    await fetch('/subscribe', {
-        method: 'POST',
-        body: JSON.stringify(subscription),
-        headers: {
-            'content-type': 'application/json'
-        }
-    });
+function send() {
+    navigator.serviceWorker.register('/js/worker.js')
+        .then(function (register) {
+            register.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+            }).then(function (subscription) {
+                fetch('/subscribe', {
+                    method: 'POST',
+                    body: JSON.stringify(subscription),
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                });
+            })
+        });
 }
 
 function urlBase64ToUint8Array(base64String) {
