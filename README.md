@@ -25,8 +25,30 @@ npm start
 ## 2. Wireflow
 Sketches of my initial idea:
 
-![1](../master/docs/1.jpg)
+**Search**
+<p align="center">
+  <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/1.png">
+</p>
 
-![2](../master/docs/2.jpg)
+**Dashboard**
+<p align="center">
+  <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/2.png">
+</p>
 
-![3](../master/docs/3.jpg)
+**Notifications**
+<p align="center">
+  <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/3.png">
+</p>
+
+## 3. Core functionality
+The core functionality of the app is to see/receive notifications when your favorite team scores, as you can see in my notifications sketch.
+
+I initially, had the idea of showing also other match stats, but I didn't had time to realise it, so I scraped it.
+
+## 4. Progressive enhancement
+
+### 4.1 Functional and reliable
+
+### 4.2 Usable
+
+### 4.3 Pleasurable
