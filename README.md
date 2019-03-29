@@ -94,7 +94,10 @@ If Verdana is not supported, the fallback will be the default sans-serif font fa
 
 ### 5.4 Bandwidth
 
-
+I tested the webapp with Chrome's 'slow 3G' emulation. 
+The match page took 8 seconds to load the 190 KB.
+This is without optimizations.
+Unfortunately I didn't had time to do optimizations such as minifying, compressing and caching.
 
 ### 5.5 Mouse/Trackpad
 
