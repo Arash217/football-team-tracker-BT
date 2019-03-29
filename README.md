@@ -39,3 +39,11 @@ Sketches of my initial idea:
 <p align="center">
   <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/3.png">
 </p>
+
+## 3. Progressive enhancement
+
+### 3.1 Functional and reliable
+
+### 3.2 Usable
+
+### 3.3 Pleasurable
