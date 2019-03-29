@@ -48,19 +48,28 @@ I initially, had the idea of showing also other match stats, but I didn't had ti
 ## 4. Progressive enhancement
 
 ### 4.1 Functional and reliable
+Without CSS and JavaScript:
 
 <p align="center">
   <img height="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/reliable.jpg">
 </p>
 
+It doesn't look pretty but it still works. The scores and notifications are updated, because the page constantly refreshes every second which causes the server to send a new page.
+
 ### 4.2 Usable
+With CSS but no JavaScript:
 
 <p align="center">
   <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/usable.jpg">
 </p>
 
+It looks a lot better now! Though, the page still refreshes every second to update the scores and notifications.
+
 ### 4.3 Pleasurable
+With JavaScript:
 
 <p align="center">
   <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/pleasurable.jpg">
 </p>
+
+Now we're talking! We get push notifications when a team scores. Also the page isn't constantly refreshing anymore to update the scores and notifications, instead it's updated with websockets. The scores and time are updated by the server, meaning that when a change happens in the server the data is pushed to the browser with websockets. For browsers that don't support websockets, the page is being updated by polling the server. Neat, huh? 
