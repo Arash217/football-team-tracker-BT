@@ -244,3 +244,12 @@ nav {
     width: 2em;
     margin: 0.5em;
 }
+
+.submit-button {
+    background-color: #271d66;
+    height: 3em;
+    color: white;
+    align-items: center;
+    border: 0;
+    text-align: center;
+}

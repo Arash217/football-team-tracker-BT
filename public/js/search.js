@@ -1,5 +1,8 @@
 const searchInput = document.querySelector('#search-input');
 const teamsFormContainer = document.querySelector('#teams-form-container');
+const searchButton = document.querySelector('#search-button');
+
+searchButton.style.display = 'none';
 
 const inputEventHandler = async function (e) {
     const res = await fetch('/search', {
