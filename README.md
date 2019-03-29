@@ -54,7 +54,7 @@ Without CSS and JavaScript:
   <img height="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/reliable.jpg">
 </p>
 
-It doesn't look pretty but it still works. The scores and notifications are updated, because the page constantly refreshes every second which causes the server to send a new page.
+It doesn't look pretty but it still works. The scores and notifications are updated by constantly refreshing the page every second which triggers the server to send a new page back.
 
 ### 4.2 Usable
 With CSS but no JavaScript:
