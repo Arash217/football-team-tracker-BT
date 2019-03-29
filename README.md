@@ -43,7 +43,7 @@ Sketches of my initial idea:
 ## 3. Core functionality
 The core functionality of the app is to see/receive notifications when your favorite team scores, as you can see in my notifications sketch.
 
-Initialy, I had the idea of showing also other match stats, but I didn't had time to realise it, so I scraped it.
+I initially, had the idea of showing also other match stats, but I didn't had time to realise it, so I scraped it.
 
 ## 4. Progressive enhancement
 
