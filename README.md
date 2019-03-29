@@ -134,12 +134,8 @@ Webapp doesn't use localstorage.
 
 ### Device lab
 I tested the webapp on different devices. 
-Unfortunately, it worked only on the HTC tablet because it was the only device that supported HTTP2.
-I didn't had enough time to add support for HTTPS so that's a todo for later.
-Though, the app did work well on the HTC tablet. 
-The home page and the scan page worked perfectly.
-The only issue was on the details page, where the SVG of the stop button didn't display.
-I didn't had time to look into the problem, so that's a todo for later.
+It worked on all devices but there was an issue with a smartphone which had a FireFox OS.
+For some reason the time didn't get updated but the notifications did.
 
 ### Screen reader
 The screen reader works perfectly on the search page but there are issues on the other pages. 
