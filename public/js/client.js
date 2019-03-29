@@ -7,10 +7,12 @@ if ('serviceWorker' in navigator) {
 function send() {
     navigator.serviceWorker.register('/js/worker.js')
         .then(function (register) {
+            // Register
             register.pushManager.subscribe({
                 userVisibleOnly: true,
                 applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
             }).then(function (subscription) {
+                // Post to server
                 fetch('/subscribe', {
                     method: 'POST',
                     body: JSON.stringify(subscription),
