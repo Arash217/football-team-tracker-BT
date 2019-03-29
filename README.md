@@ -98,7 +98,9 @@ If Verdana is not supported, the fallback will be the default sans-serif font fa
 
 ### 5.5 Mouse/Trackpad
 
-
+The website works with keyboard only.
+You can easily navigate around between the pages, search for a team, add a team and click on a team to display the live match. 
+Both with JavaScript enabled and disabled.
 
 ### 5.6 JavaScript
 
@@ -134,11 +136,8 @@ The only issue was on the details page, where the SVG of the stop button didn't 
 I didn't had time to look into the problem, so that's a todo for later.
 
 ### Screen reader
-I tested the webapp with the Windows screen reader.
-While the screen reader did found my buttons and a tag so that the user can navigate around, toggle the flashlight and play the tracks,
-the buttons and the a tag didn't had any meaning.
-For the a tag on the homepage the screen reader read out the full url to the scan page. 
-For a user using a screen reader the url is hard to understand because it's basically all numbers. This is because the webapp is hosted on a server which doesn't use a domain name.
-The screen reader reffered the flashlight button on the scan page simply as 'button'. This doesn't has any meaning for a user using a screen reader.
-The play/stop buttons on the details page got the same issue.
-I didn't had enough time to investigate the issues with the screen reader, so I add it as a todo for later.
+The screen reader works perfectly on the search page but there are issues on the other pages. 
+It doesn’t work on the dashboard for the teams list. 
+Because I’m wrapping a link tag around a div without giving the a tag text.
+The screen reader also doesn’t work properly when JavaScript is disabled in the match page. 
+Since the page is refreshed every second, the screen reader will continuously repeat the 'back to dashboard button' properties. 
