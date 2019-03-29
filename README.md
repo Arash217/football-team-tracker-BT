@@ -89,8 +89,11 @@ I chose this font family because it's a web-safe font and because it looks simil
 If Verdana is not supported, the fallback will be the default sans-serif font family of the browser.
 
 ### 5.3 Colors
+I use primarily the colors purple and white. As you can see, the contrast between these colors are good! 
 
-
+<p align="center">
+  <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/color.jpg">
+</p>
 
 ### 5.4 Bandwidth
 
