@@ -66,7 +66,10 @@ With CSS but no JavaScript:
 It looks a lot better now! Though, the page still refreshes every second to update the scores and notifications.
 
 ### 4.3 Pleasurable
+With JavaScript:
 
 <p align="center">
   <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/pleasurable.jpg">
 </p>
+
+Now we're talking! We get push notifications when a team scores. Also the page isn't constantly refreshing anymore to update the scores and notifications, instead it's updated with websockets. The scores and time are updated by the server, meaning that when a change happens in the server the data is pushed to the browser. For browsers that don't support websockets, the page is being updated by polling the server. Neat, huh? 
