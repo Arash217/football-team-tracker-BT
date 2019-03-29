@@ -50,13 +50,15 @@ I initially, had the idea of showing also other match stats, but I didn't had ti
 ### 4.1 Functional and reliable
 
 <p align="center">
-  <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/reliable.jpg">
+  <img width="500px" height="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/reliable.jpg">
 </p>
+
 ### 4.2 Usable
 
 <p align="center">
   <img width="500px" src="https://github.com/Arash217/football-team-tracker-BT/blob/master/docs/usable.jpg">
 </p>
+
 ### 4.3 Pleasurable
 
 <p align="center">
