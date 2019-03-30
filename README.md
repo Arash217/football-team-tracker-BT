@@ -123,7 +123,7 @@ No JavaScript used on this page.
 
 #### Match Page
 Push notifications and websockets work when JavaScript is enabled.
-When JavaScript is disabled, I use a noscript tag with http-equiv="refresh" to request a new page from the server.
+When JavaScript is disabled, I use http-equiv="refresh" to refresh the page so that a new page from the server can be sent back.
 This way the page still can show the updated scores and notifications.
 
 ### 5.7 Cookies
@@ -141,7 +141,7 @@ For some reason the time didn't get updated but the notifications did.
 The screen reader works as expected on the search page and the dashboard page but there is an issue on the match page.
 When JavaScript is disabled, the match page is refreshed every second, which causes the screen reader to continuously repeat the 'back to dashboard' button properties. 
 
-## 6. Feature Detection
+## 6. Feature Detection examples
 
 #### Service Worker
 Checking whether the browser supports service workers. 
