@@ -139,7 +139,7 @@ For some reason the time didn't get updated but the notifications did.
 
 ### Screen reader
 The screen reader works as expected on the search page and the dashboard page but there is an issue on the match page.
-When JavaScript is disabled, the match page is refreshed every second, which causes the screen reader to continuously repeat the 'back to dashboard' button properties. 
+When JavaScript is disabled, the match page is refreshed every second, which will cause the screen reader to continuously repeat the 'back to dashboard' button properties. 
 
 ## 6. Feature Detection examples
 
