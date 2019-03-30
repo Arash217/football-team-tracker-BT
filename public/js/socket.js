@@ -3,7 +3,6 @@ var socket = io();
 var gameTime;
 var team1Goals;
 var team2Goals;
-
 var source;
 var target;
 

@@ -134,12 +134,41 @@ Webapp doesn't use localstorage.
 
 ### Device lab
 I tested the webapp on different devices. 
-It worked on all devices but there was an issue with a smartphone which had a FireFox OS.
+It worked on all devices except for a smartphone which had FireFox OS.
 For some reason the time didn't get updated but the notifications did.
 
 ### Screen reader
-The screen reader works perfectly on the search page but there are issues on the other pages. 
-It doesn’t work on the dashboard for the teams list. 
-Because I’m wrapping a link tag around a div without giving the a tag text.
-The screen reader also doesn’t work properly when JavaScript is disabled in the match page. 
-Since the page is refreshed every second, the screen reader will continuously repeat the 'back to dashboard button' properties. 
+The screen reader works as expected on the search page and the dashboard page but there is an issue on the match page.
+When JavaScript is disabled, the match page is refreshed every second, which causes the screen reader to continuously repeat the 'back to dashboard' button properties. 
+
+## 6. Feature Detection
+
+#### Service Worker
+Checking whether the browser supports service workers. 
+If it does, the method send is invoked to start the push notifications.
+The user can follow the match in the match page if his/her browser doesn't support service workers.
+
+```bash
+if ('serviceWorker' in navigator) {
+    send();
+}
+```
+
+#### QuerySelector
+Checking whether the browser supports querySelectors. 
+If it does, then obviously querySelectors are used, otherwise getElementsByClassName and getElementById.
+
+```bash
+...
+var source;
+var target;
+if ('querySelector' in document){
+    ...
+    source = document.querySelector("#match-timeline-template").innerHTML;
+    target = document.querySelector(".match-timeline");
+} else {
+    ...
+    source = document.getElementById("match-timeline-template").innerHTML;
+    target = document.getElementsByClassName(".match-timeline")[0];
+}
+```
